@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,35 +14,42 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.rrp.ubs.order.contant.OrderStatus;
+
 @Component
 @Entity
 @Table(name = "order_detail")
 public class OrderEntity implements Serializable {
-	
+
 	private static final long serialVersionUID = -3009157732242241606L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
 	private int orderId;
-	
+
+	private int customerId;
+
 	@Column(name = "ORDER_CODE")
 	private String orderCode;
-	
+
 	@Column(name = "ORDER_DESCRIPTION")
 	private String orderDescription;
-	
+
 	@Column(name = "ORDER_CREATE_DATE")
 	private Date orderCreateDate;
-	
+
 	@Column(name = "ORDER_NOTES")
 	private String orderNotes;
-	
-	@Column(name = "ORDER_STATUS")
-	private String orderStatus;
-	
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "ORDER_STATUS")	
+	private OrderStatus orderStatus;
+
 	@Column(name = "ORDER_UPDATE_DATE")
 	private Date orderUpdateDate;
-	
+
 	@Column(name = "ORDER_UPDATE_USER_NAME")
 	private String orderUpdateUserName;
 
@@ -76,14 +85,6 @@ public class OrderEntity implements Serializable {
 		this.orderCreateDate = orderCreateDate;
 	}
 
-	public String getOrderNotes() {
-		return orderNotes;
-	}
-
-	public void setOrderNotes(String orderNotes) {
-		this.orderNotes = orderNotes;
-	}
-
 	public Date getOrderUpdateDate() {
 		return orderUpdateDate;
 	}
@@ -104,15 +105,36 @@ public class OrderEntity implements Serializable {
 		return serialVersionUID;
 	}
 
-	public String getOrderStatus() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getOrderNotes() {
+		return orderNotes;
+	}
+
+	public void setOrderNotes(String orderNotes) {
+		this.orderNotes = orderNotes;
+	}
+
+	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
 
-	public void setOrderStatus(String orderStatus) {
+	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-	
-	
-	
 
 }
