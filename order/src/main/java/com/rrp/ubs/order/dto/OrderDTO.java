@@ -3,6 +3,8 @@ package com.rrp.ubs.order.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.rrp.ubs.order.contant.OrderStatus;
+
 public class OrderDTO implements Serializable {
 
 	/**
@@ -11,6 +13,8 @@ public class OrderDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int orderId;
+	
+	private int customerId;
 
 	private String orderCode;
 
@@ -20,7 +24,7 @@ public class OrderDTO implements Serializable {
 
 	private String orderNotes;
 
-	private String orderStatus;
+	private OrderStatus orderStatus;
 
 	private Date orderUpdateDate;
 
@@ -86,12 +90,21 @@ public class OrderDTO implements Serializable {
 		return serialVersionUID;
 	}
 
-	public String getOrderStatus() {
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
 
-	public void setOrderStatus(String orderStatus) {
+	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
 	}
+	
 
 }
