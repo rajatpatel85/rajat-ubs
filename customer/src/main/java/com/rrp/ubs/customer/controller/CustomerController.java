@@ -1,10 +1,12 @@
 package com.rrp.ubs.customer.controller;
 
 import java.text.ParseException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +20,7 @@ import com.rrp.ubs.customer.dao.CustomerEntity;
 import com.rrp.ubs.customer.dto.CustomerDTO;
 import com.rrp.ubs.customer.service.CustomerService;
 import com.rrp.ubs.customer.util.CustomerUtil;
-
+@CrossOrigin
 @RestController
 @RequestMapping("v1/customer")
 public class CustomerController {
